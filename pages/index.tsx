@@ -1,25 +1,39 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+ import useUser from "../utils/useUser";
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      <Head>
-        <title>Next Starter</title>
-        <meta name="description" content="Another Next Starter" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className="mb-4 text-4xl text-center text-gray-800 font-bold font-sans">
-          Tailwind CSS Boilerplate
-        </h1>
-        <p className="text-sm text-center text-gray-600 font-sans">
-          Get started by editing index.html
-        </p>
-      </main>
-    </div>
-  );
+   const { user, logout, signInWithGoogle } = useUser();
+   return (
+     <div>
+       <Head>
+         <title>Next.js + TailwindCSS + Firebase Starter</title>
+         <meta
+           name="description"
+           content="A Next.js + TailwindCSS + Firebase starter"
+         />
+       </Head>
+       <main
+         className={
+           "flex flex-col items-center justify-center w-screen h-screen"
+         }
+       >
+         <h1 className={"text-4xl font-bold text-indigo-800 hover:italic"}>
+           A Next.js + TailwindCSS + Firebase Starter
+         </h1>
+         {user ? (
+           <>
+             <p>Signed in as {user.displayName}</p>
+             <button onClick={() => logout()}>Sign Out</button>
+           </>
+         ) : (
+           <button onClick={() => signInWithGoogle()}>
+             Sign in with Google
+           </button>
+         )}
+       </main>
+     </div>
+   );
 };
 
 export default Home;
