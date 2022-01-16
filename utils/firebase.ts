@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 // check if already initialized
-if (!getApps().length) {
+if (typeof window !== 'undefined' && !getApps().length) {
   initializeApp(firebaseConfig);
 }
 
