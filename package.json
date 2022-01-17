@@ -13,16 +13,16 @@
     "check:fix": "yarn run format && yarn run lint"
   },
   "dependencies": {
-    "firebase": "^9.6.2",
+    "firebase": "^9.6.3",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@types/node": "^16.11.19",
+    "@types/node": "^16.11.20",
     "@types/react": "^17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
-    "@typescript-eslint/parser": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.1",
     "autoprefixer": "^10.4.2",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
