@@ -1,20 +1,19 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { auth } from "./firebase";
 import {
+  User,
   GoogleAuthProvider,
   signInWithPopup,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
 import { useRouter } from "next/router";
 
 const useAuth = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const handleUser = (rawUser) => {
+  const handleUser = (rawUser: User | null) => {
     if (rawUser) {
       setUser(rawUser);
       setLoading(false);
@@ -23,7 +22,7 @@ const useAuth = () => {
       setLoading(false);
     }
   };
-  const signInWithGoogle = async (fn) => {
+  const signInWithGoogle = async (fn?: Function) => {
     setLoading(true);
     const response = await signInWithPopup(auth, new GoogleAuthProvider());
     handleUser(response.user);
@@ -32,27 +31,9 @@ const useAuth = () => {
     }
     router.back();
   };
-  const createUserWithEmail = async (email, password, username, fn) => {
-    setLoading(true);
-    const response = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    handleUser(response.user);
-    if (fn) {
-      await fn(response, username);
-    }
-    router.back();
-  };
 
-  const signInWithEmail = async (email, password) => {
-    const response = await signInWithEmailAndPassword(auth, email, password);
-    handleUser(response.user);
-    router.back();
-  };
   const logout = () => {
-    return signOut(auth).then(() => handleUser(false));
+    return signOut(auth).then(() => handleUser(null));
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, handleUser);
@@ -65,12 +46,15 @@ const useAuth = () => {
     logout,
     loading,
     signInWithGoogle,
-    signInWithEmail,
-    createUserWithEmail,
   };
 };
-const UserContext = createContext();
-export const UserContextProvider = ({ children }) => {
+const UserContext = createContext<{
+  user: User | null;
+  logout: Function;
+  loading: boolean;
+  signInWithGoogle: Function;
+}>({ user: null, logout: () => {}, loading: true, signInWithGoogle: () => {} });
+export const UserContextProvider = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
   return <UserContext.Provider value={auth}>{children}</UserContext.Provider>;
 };
