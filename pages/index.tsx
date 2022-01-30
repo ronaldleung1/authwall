@@ -18,8 +18,8 @@ const Home: NextPage = () => {
            "flex flex-col items-center justify-center w-screen h-screen"
          }
        >
-         <h1 className={"text-4xl font-bold text-indigo-800 hover:italic"}>
-           A Next.js + TailwindCSS + Firebase Starter
+         <h1 className={"text-4xl font-bold text-gray-800"}>
+           Authwall
          </h1>
          {user ? (
            <>
