@@ -29,7 +29,6 @@ const useAuth = () => {
     if (fn) {
       await fn(response);
     }
-    router.back();
   };
 
   const logout = () => {
