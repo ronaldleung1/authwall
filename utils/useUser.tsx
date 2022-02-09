@@ -1,13 +1,19 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { auth } from "./firebase";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { auth } from './firebase';
 import {
   User,
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
   signOut,
-} from "firebase/auth";
-import { useRouter } from "next/router";
+} from 'firebase/auth';
+import { useRouter } from 'next/router';
 
 const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
