@@ -13,12 +13,10 @@ import {
   onAuthStateChanged,
   signOut,
 } from 'firebase/auth';
-import { useRouter } from 'next/router';
 
 const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
   const handleUser = (rawUser: User | null) => {
     if (rawUser) {
       setUser(rawUser);
