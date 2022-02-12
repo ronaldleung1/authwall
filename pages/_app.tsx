@@ -10,12 +10,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (!user) {
-      router.push("/login");  
+      router.push('/login');
     } else {
       console.log(user.displayName);
     }
   }, [user]);
-  
+
   return (
     <UserContextProvider>
       <Component {...pageProps} />
