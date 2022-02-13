@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import useUser from '../utils/useUser';
 
 const Home: NextPage = () => {
+
   return (
     <>
       <Head>

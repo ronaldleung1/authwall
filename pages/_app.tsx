@@ -6,15 +6,23 @@ import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const { user } = useUser();
+  const { user, loading } = useUser();
 
   useEffect(() => {
+    console.log(user);
+    console.log(loading);
+    if (loading) return;
     if (!user) {
       router.push('/login');
     } else {
       console.log(user.displayName);
     }
-  }, [user]);
+    /*if (!user) {
+      router.push('/login');
+    } else {
+      console.log(user.displayName);
+    }*/
+  }, [user, loading]);
 
   return (
     <UserContextProvider>

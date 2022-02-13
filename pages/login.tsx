@@ -4,6 +4,7 @@ import useUser from '../utils/useUser';
 
 const Home: NextPage = () => {
   const { user, logout, signInWithGoogle } = useUser();
+
   return (
     <>
       <Head>
