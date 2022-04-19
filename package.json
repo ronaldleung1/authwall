@@ -13,7 +13,7 @@
     "check:fix": "yarn run format && yarn run lint"
   },
   "dependencies": {
-    "firebase": "^9.6.8",
+    "firebase": "^9.6.11",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
@@ -23,7 +23,7 @@
     "@types/react": "^17.0.41",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.15.0",
-    "autoprefixer": "^10.4.2",
+    "autoprefixer": "^10.4.4",
     "eslint": "^8.11.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -34,7 +34,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.3.0",
-    "postcss": "^8.4.8",
+    "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "prettier-eslint": "^13.0.0",
     "tailwindcss": "^3.0.23",
